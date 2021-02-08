@@ -29,7 +29,7 @@ pandas
 thop  # FLOPS computation
 pycocotools>=2.0  # COCO mAP
 #####Custom
-## augmentation
-augmentation
 # Mod
-torchviz
+torchvision==0.2.1
+pillow==5.1.0
+
