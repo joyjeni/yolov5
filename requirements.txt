@@ -32,4 +32,5 @@ pycocotools>=2.0  # COCO mAP
 # Mod
 torchvision==0.2.1
 pillow==5.1.0
+adabelief-pytorch==0.2.0
 
