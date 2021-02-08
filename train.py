@@ -35,6 +35,8 @@ from utils.torch_utils import ModelEMA, select_device, intersect_dicts, torch_di
 
 from adabelief_pytorch import AdaBelief
 
+from torchviz import make_dot
+
 logger = logging.getLogger(__name__)
 
 
@@ -125,7 +127,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
     # https://pytorch.org/docs/stable/_modules/torch/optim/lr_scheduler.html#OneCycleLR
     lf = one_cycle(1, hyp['lrf'], epochs)  # cosine 1->hyp['lrf']
     scheduler = lr_scheduler.LambdaLR(optimizer, lr_lambda=lf)
-    # plot_lr_scheduler(optimizer, scheduler, epochs)
+    plot_lr_scheduler(optimizer, scheduler, epochs)
 
     # Logging
     if rank in [-1, 0] and wandb and wandb.run is None:
@@ -237,6 +239,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
                 f'Starting training for {epochs} epochs...')
     for epoch in range(start_epoch, epochs):  # epoch ------------------------------------------------------------------
         model.train()
+                
 
         # Update image weights (optional)
         if opt.image_weights:
