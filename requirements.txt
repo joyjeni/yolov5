@@ -31,6 +31,6 @@ pycocotools>=2.0  # COCO mAP
 #####Custom
 # Mod
 torchvision==0.2.1
-pillow==5.1.0
+pillow==7.0.0
 adabelief-pytorch==0.2.0
 
